@@ -29,7 +29,7 @@ jobs:
         id: scan
         uses: scanoss/actions-scan@v0
         with:
-          policies: copyleft, undeclared
+          policies: copyleft
           dependencies.enabled: true
           licenses.copyleft.include: MIT
           dependencies.scope.include: devDependencies
