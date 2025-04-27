@@ -26,4 +26,5 @@ jobs:
           export GITHUB_REPOSITORY="https://github.com/EngineerMay/devsecops-github-actions-all"
           export GITHUB_TOKEN="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"
           export SCAN_MODE="repo scans"  # Properly indented
+          export SCANNERS="nomos ojo"
           ./script.sh
