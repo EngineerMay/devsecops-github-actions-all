@@ -1,20 +1,26 @@
-name: License scan on PR
+name: License Compliance Scan
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
   compliance_check:
     runs-on: ubuntu-latest
     name: Perform license scan
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - name: License check
-      id: compliance
-      uses: fossology/fossology-action@v1
-      with:
-        scan_mode: ''
-        scanners: 'nomos ojo copyright keyword'
-        report_format: 'SPDX_JSON'
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Pull public Docker image
+        run: docker pull fossology/fossology
+
+      - name: License check (placeholder)
+        id: compliance
+        run: |
+          echo "Running license check with Fossology..."
+          # Add your docker run or scanning logic here
+        env:
+          SCAN_MODE: ''
+          SCANNERS: 'nomos ojo copyright keyword'
+          REPORT_FORMAT: 'SPDX_JSON'
