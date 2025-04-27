@@ -22,7 +22,9 @@ jobs:
       - name: Run Fossology Action
         id: compliance
         run: |
+          echo "$GITHUB_WORKSPACE"
           cd .github/actions/fossology-action
+          export PWD=$GITHUB_WORKSPACE
           export GITHUB_REPOSITORY="https://github.com/EngineerMay/devsecops-github-actions-all"
           export GITHUB_TOKEN="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"
           export SCAN_MODE="repo"  # Properly indented
