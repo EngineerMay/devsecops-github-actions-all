@@ -1,4 +1,5 @@
 name: Test Fossology Action
+
 on:
   workflow_dispatch:
 
@@ -7,17 +8,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository code
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Clone Fossology Action
+      # Clone Fossology Action repository
+      - name: Clone Fossology Action repository
         run: |
           mkdir -p .github/actions
           git clone https://github.com/fossology/fossology-action.git .github/actions/fossology-action
 
+      # Run the Fossology Action
       - name: Run Fossology Action
-        uses: ./.github/actions/fossology-action
-        with:
-          scan_mode: ""
-          scanners: "nomos ojo copyright keyword"
-          report_format: "SPDX_JSON"
+        id: compliance
+        run: |
+          cd .github/actions/fossology-action
+          export GITHUB_REPOSITORY="https://github.com/EngineerMay/devsecops-github-actions-all"
+          export GITHUB_TOKEN="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"
+          export SCAN_MODE="repo scans"  # Properly indented
+          ./script.sh
